@@ -1,17 +1,25 @@
-import logo from './logo.svg';
+
+
 import './App.css';
 import Header from './components/header/header';
-import Form from './components/form/form';
 import {data} from "./data/emoji.js"
 import { useState } from 'react';
+import CardList from './components/cardList/cardList';
+import Card from './components/card/card';
 
 
-const [filteredEmoji, setFilteredEmoji] = useState(data)
+
+
 function App() {
+  const [filteredEmoji, setFilteredEmoji] = useState(data)
   return (
     <div className="App">
-    <Header title="Emoji Finder" text="Find emoji by keywords"/>
-    <Form/>
+    <Header title="Emoji Finder" text="Find emoji by keywords" filteredEmoji={filteredEmoji} setFilteredEmoji={setFilteredEmoji} data={data}/>
+   
+    <main>
+    <CardList data={filteredEmoji}/>
+    <Card />
+    </main>
     </div>
   );
 }
